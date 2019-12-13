@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".CityCenter">
 
-
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
@@ -17,6 +16,5 @@
         app:mapbox_cameraZoomMax="12.41"
         app:mapbox_cameraZoomMin="6"
         app:mapbox_uiRotateGestures="false"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
