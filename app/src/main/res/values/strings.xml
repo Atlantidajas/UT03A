@@ -5,5 +5,7 @@
 
     <string name="messageClickItem">"Ciudad pulsada: "</string>
 
+    <string name="AccessToken">pk.eyJ1Ijoiam9yZ2VhdGxhbnRpZGFqYXMiLCJhIjoiY2szOTU4c2U3MGY4MTNscGlnaXJlcGV2OSJ9.Dls8Ix2-aivXc95A_eUFQw</string>
+
 
 </resources>

@@ -1,9 +1,8 @@
 package com.practices.jorge.ut03a;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.practices.jorge.ut03a.Controllers.CityAdapter;
 import com.practices.jorge.ut03a.Models.Cities;
 
@@ -15,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,28 +31,6 @@ public class MainActivity extends AppCompatActivity {
         getVistas();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private void getVistas() {
 
         this.listViewCities = findViewById( R.id.listViewCities );
@@ -70,22 +46,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> lst, View viewRow,
                                     int posicion, long id) {
-                messageToast(getString(R.string.messageClickItem) + lst.getItemAtPosition( posicion ));
+
+               Intent intent = new Intent (viewRow.getContext(), CityCenter.class);
+
+               intent.putExtra("name", cities.getName(posicion));
+               intent.putExtra("latitude", cities.getLatitude(posicion));
+               intent.putExtra("loyalty", cities.getLoyalty(posicion));
+               startActivityForResult(intent, 0);
+
             }
         });
     }
 
-
-    // Muestra una tostada.
-    private void messageToast(String mensaje) {
-        Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
-    }
-
     public void predefiniedCities(){
 
-        cities.setCity( 0, "Madrid", 1000.0, 2000.0 );
+        cities.setCity(0, "Santa Cruz de Tenerife", 28.4636296, -16.2518467);
+        cities.setCity( 0, "San Sebastián de La Gomera", 28.0937998, -17.1098582);
+        cities.setCity( 0, "Santa Cruz de La Palma",28.6839885, -17.7645747);
+        cities.setCity(1, "Las Palmas de Gran Canaria", 28.1235459, -15.4362574);
+        cities.setCity(1, "Arrecife, Lanzarote", 28.9651694, -13.5550363);
+        cities.setCity(1, "Puerto del Rosario, Fuerteventura", 28.500821, -13.8628367);
+        cities.setCity(1, "Caleta del Sebo, La Graciosa", 29.2314646, -13.5034144);
 
     }
-
 
 }
