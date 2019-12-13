@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">UT03A</string>
+    <string name="app_name">MapBox UT03A</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="messageClickItem">"Ciudad pulsada: "</string>
+
+
 </resources>
